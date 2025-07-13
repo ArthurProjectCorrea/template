@@ -56,6 +56,7 @@ Este template fornece uma base sólida para projetos fullstack com:
 - [**Migration Notes**](MIGRATION_NOTES.md) - Notas de migração
 - [**Maintenance Guide**](MAINTENANCE_GUIDE.md) - Guia de manutenção
 - [**Troubleshooting**](TROUBLESHOOTING.md) - Solução de problemas
+- [**Template Validation**](TEMPLATE_VALIDATION.md) - Checklist completo de validação
 
 ## 🎯 Como Usar Esta Documentação
 
