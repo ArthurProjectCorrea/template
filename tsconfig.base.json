@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/types/*": ["./src/types/*"],
+      "@repo/ui": ["./packages/ui/src"],
+      "@repo/ui/*": ["./packages/ui/src/*"],
+      "@repo/eslint-config": ["./packages/eslint-config"],
+      "@repo/eslint-config/*": ["./packages/eslint-config/*"],
+      "@repo/typescript-config": ["./packages/typescript-config"],
+      "@repo/typescript-config/*": ["./packages/typescript-config/*"],
+      "@repo/tailwind-config": ["./packages/tailwind-config"],
+      "@repo/tailwind-config/*": ["./packages/tailwind-config/*"]
+    },
+    "lib": ["dom", "dom.iterable", "es6"],
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSources": false,
+    "composite": true
+  },
+  "exclude": ["node_modules", ".turbo", "dist", "build", ".next"]
+}

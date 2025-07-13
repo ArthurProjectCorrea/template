@@ -1,0 +1,76 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "build:styles": {
+      "dependsOn": ["^build:styles"],
+      "outputs": ["dist/**"]
+    },
+    "build:components": {
+      "dependsOn": ["^build:components"],
+      "outputs": ["dist/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "inputs": ["src/**/*.{js,jsx,ts,tsx}", "**/*.{js,jsx,ts,tsx}", "!**/node_modules/**", "!**/.turbo/**"],
+      "outputs": []
+    },
+    "lint:fix": {
+      "dependsOn": ["^lint:fix"],
+      "inputs": ["src/**/*.{js,jsx,ts,tsx}", "**/*.{js,jsx,ts,tsx}", "!**/node_modules/**", "!**/.turbo/**"],
+      "outputs": [],
+      "cache": false
+    },
+    "format": {
+      "inputs": ["**/*.{js,jsx,ts,tsx,md,json,yml,yaml}", "!**/node_modules/**", "!**/.turbo/**"],
+      "outputs": [],
+      "cache": false
+    },
+    "format:check": {
+      "inputs": ["**/*.{js,jsx,ts,tsx,md,json,yml,yaml}", "!**/node_modules/**", "!**/.turbo/**"],
+      "outputs": []
+    },
+    "clean": {
+      "cache": false
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "src/**/*.tsx", "test/**/*.ts", "**/*.spec.ts", "**/*.test.ts"],
+      "outputs": ["coverage/**"]
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:e2e": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "src/**/*.tsx", "test/**/*.ts", "**/*.e2e-spec.ts"],
+      "outputs": ["coverage/**"]
+    },
+    "test:cov": {
+      "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "src/**/*.tsx", "test/**/*.ts", "**/*.spec.ts", "**/*.test.ts"],
+      "outputs": ["coverage/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev:styles": {
+      "cache": false,
+      "persistent": true
+    },
+    "dev:components": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

@@ -1,0 +1,34 @@
+# Ignore files
+node_modules/
+.next/
+.turbo/
+dist/
+build/
+coverage/
+
+# Ignore generated files
+*.tsbuildinfo
+.eslintcache
+
+# Ignore package manager lockfiles
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Ignore environment files
+.env*
+
+# Ignore log files
+*.log
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore specific config files that shouldn't be formatted
+*.min.js
+*.min.css
