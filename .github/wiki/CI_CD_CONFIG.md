@@ -12,16 +12,6 @@
 
 ### 🔄 Workflows de CI/CD
 
-#### 🚀 Test and Deploy - **PRINCIPAL** (`test-and-deploy.yml`)
-
-- **Triggers**: PRs e Push para `main`
-- **Jobs**:
-  - `build`: Build completo + testes (backend + frontend)
-  - `auto-merge`: Auto-merge para Dependabot e PRs com label
-  - `deploy`: Deploy automático para produção (apenas push)
-- **Features**: Coverage reports, cache otimizado, deploy para Vercel
-- **Timeout**: 20 minutos
-
 #### 🔍 CI - Code Quality & Tests (`ci.yml`)
 
 - **Triggers**: Push/PR para `main` e `develop`

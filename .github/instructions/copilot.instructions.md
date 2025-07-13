@@ -154,9 +154,39 @@ Todos os commits passam por:
 
 ## 🔄 Workflows de CI/CD
 
+### 🚀 Test and Deploy (Workflow Principal)
+
+O workflow `test-and-deploy.yml` é o pipeline principal que combina testes e deploy:
+
+**Triggers**:
+
+- PRs para `main`
+- Pushes para `main`
+
+**Jobs**:
+
+1. **Build and Test**:
+   - Setup do ambiente (Node.js 20, pnpm 8)
+   - Cache otimizado do pnpm store
+   - Build de todos os packages
+   - Testes do backend (`pnpm --filter api test`)
+   - Testes do frontend (`pnpm --filter web test`)
+   - Upload de coverage reports para Codecov
+
+2. **Auto Merge** (apenas em PRs):
+   - Executa após sucesso dos testes
+   - Auto-approve para Dependabot
+   - Enable auto-merge com squash method
+   - Requer label `auto-merge` ou ser Dependabot
+
+3. **Deploy** (apenas em push para main):
+   - Deploy da API para produção
+   - Deploy do frontend para Vercel
+   - Notificações de sucesso/falha
+
 ### 🔍 Continuous Integration (CI)
 
-O workflow de CI é executado em todos os PRs e pushes para `main`/`develop`:
+O workflow de CI (`ci.yml`) é executado em todos os PRs e pushes para `main`/`develop`:
 
 1. **Code Quality**: ESLint, Prettier, TypeScript check
 2. **Tests**: Unit tests (Jest) e E2E tests (Playwright/Supertest)
@@ -165,7 +195,7 @@ O workflow de CI é executado em todos os PRs e pushes para `main`/`develop`:
 
 ### 🚀 Continuous Deployment (CD)
 
-O workflow de CD é executado apenas em pushes para `main`:
+O workflow de CD (`cd.yml`) é executado apenas em pushes para `main`:
 
 1. **Deploy API**: Build e deploy do backend
 2. **Deploy Frontend**: Build e deploy para Vercel
@@ -178,6 +208,11 @@ PRs são automaticamente merged quando:
 - São criados pelo Dependabot
 - Ou têm a label `auto-merge`
 - E passam em todos os checks de CI
+
+**Workflows com Auto-merge**:
+
+- `test-and-deploy.yml` (pipeline principal)
+- `auto-merge.yml` (workflow dedicado)
 
 ### 📦 Release
 
@@ -196,10 +231,12 @@ Releases automáticos são criados quando:
 3. 💻 **Desenvolva** seguindo as diretrizes
 4. 🧪 **Teste localmente**: `pnpm test`
 5. ✅ **Commit**: Com conventional commits
-6. 📤 **Push** e abra PR para `develop`
-7. ⏳ **Aguarde CI** passar automaticamente
-8. 👀 **Code Review** será solicitado
-9. 🔀 **Merge** automático após aprovação
+6. 📤 **Push** e abra PR para `main` (agora com test-and-deploy)
+7. ⏳ **Aguarde pipeline** passar automaticamente:
+   - Build e testes executam
+   - Coverage é reportado
+   - Auto-merge se for Dependabot ou tiver label
+8. 🚀 **Deploy automático** após merge para main
 
 ### Para Dependabot:
 
@@ -237,6 +274,3 @@ pnpm turbo run lint build test
 # Limpar antes de commit
 pnpm clean && pnpm install
 ```
-
-Provide project context and coding guidelines that AI should follow when generating code, answering
-questions, or reviewing changes.
