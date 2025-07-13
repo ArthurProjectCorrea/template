@@ -2,22 +2,22 @@
   "github.copilot.chat.profiles": {
     "frontend-helper": {
       "description": "🎨 Frontend specialist for Next.js, React, and UI development",
-      "instructions": ".github/copilot-profiles/frontend-helper.md",
+      "instructions": ".github/chatmodes/frontend-helper.chatmode.md",
       "scope": "apps/web/**"
     },
     "backend-helper": {
       "description": "⚙️ Backend specialist for NestJS, APIs, and database development", 
-      "instructions": ".github/copilot-profiles/backend-helper.md",
+      "instructions": ".github/chatmodes/backend-helper.chatmode.md",
       "scope": "apps/api/**"
     },
     "documentation-helper": {
       "description": "📚 Documentation specialist for technical writing and API docs",
-      "instructions": ".github/copilot-profiles/documentation-helper.md",
+      "instructions": ".github/chatmodes/documentation-helper.chatmode.md",
       "scope": "**"
     },
     "dev-helper": {
       "description": "🎯 Coordinator and architect for issue evaluation and system design",
-      "instructions": ".github/copilot-profiles/dev-helper.md", 
+      "instructions": ".github/chatmodes/dev-helper.chatmode.md", 
       "scope": "**"
     }
   },

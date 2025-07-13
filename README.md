@@ -1,70 +1,138 @@
-# Turborepo starter
+# 🚀 Fullstack Template
 
-This Turborepo starter is maintained by the Turborepo core team.
+Template repository for fullstack development with Next.js, NestJS, and comprehensive tooling.
 
-## Using this example
+## 🎯 Quick Start
 
-Run the following command:
+**Use this template for your project:**
 
-```sh
-npx create-turbo@latest
+```bash
+# 1. Use this repository as template on GitHub
+# 2. Clone your new repository
+git clone https://github.com/your-username/your-project.git
+cd your-project
+
+# 3. Initialize the template
+pnpm init:template
 ```
 
-## What's inside?
+**[📋 Complete Quick Start Guide](.github/wiki/QUICK_START.md)**
 
-This Turborepo includes the following packages/apps:
+## 📚 Full Documentation
 
-### Apps and Packages
+**Complete documentation is available in the [📖 Wiki](.github/wiki/HOME.md)**
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and
-  `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### 🎯 Quick Links
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- **[🚀 Quick Start](.github/wiki/QUICK_START.md)** - Get up and running in minutes
+- **[📋 Template Usage](.github/wiki/TEMPLATE_USAGE.md)** - Complete usage guide
+- **[🤖 Copilot Helpers](.github/wiki/COPILOT_HELPERS.md)** - AI-powered development
+- **[🏗️ Architecture](.github/wiki/ARCHITECTURE.md)** - System architecture overview
+- **[🔄 Development Workflow](.github/wiki/DEVELOPMENT_WORKFLOW.md)** - Complete dev workflow
+- **[🧪 Testing Strategy](.github/wiki/TESTING_STRATEGY.md)** - Comprehensive testing guide
 
-### Utilities
+## 🏗️ What's Inside?
 
-This Turborepo has some additional tools already setup for you:
+This template includes a complete fullstack setup:
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+### 🎯 Apps and Packages
 
-### Build
+- **`apps/web`**: [Next.js 15](https://nextjs.org/) app with App Router
+- **`apps/api`**: [NestJS](https://nestjs.com/) API with TypeScript
+- **`packages/ui`**: Shared React component library
+- **`packages/eslint-config`**: Shared ESLint configurations
+- **`packages/typescript-config`**: Shared TypeScript configurations
+- **`packages/tailwind-config`**: Shared Tailwind CSS configurations
 
-To build all apps and packages, run the following command:
+### 🤖 AI-Powered Development
 
+- **Chat Modes**: Specialized AI helpers (@frontend-helper, @backend-helper, @documentation-helper,
+  @dev-helper)
+- **Instructions**: Contextualized development guidelines
+- **Prompts**: Structured templates for issue evaluation and architecture coordination
+
+### 🛠️ Development Tools
+
+- **[Turborepo](https://turbo.build/)**: Monorepo build system with caching
+- **[TypeScript](https://www.typescriptlang.org/)**: Static type checking
+- **[ESLint](https://eslint.org/)**: Code linting with shared configurations
+- **[Prettier](https://prettier.io)**: Code formatting
+- **[Husky](https://typicode.github.io/husky/)**: Git hooks for quality gates
+- **[Commitlint](https://commitlint.js.org/)**: Conventional commit validation
+- **[Jest](https://jestjs.io/)**: Testing framework with coverage reports
+
+### 🧪 Testing & Quality
+
+- **Unit Tests**: Jest + React Testing Library
+- **E2E Tests**: Playwright for web, Supertest for API
+- **Coverage Thresholds**: Enforced minimums (75-95%)
+- **Quality Gates**: Pre-commit hooks, CI/CD validation
+- **Code Standards**: ESLint + Prettier + TypeScript strict mode
+
+### 🔄 CI/CD & Automation
+
+- **GitHub Actions**: Automated testing, building, and deployment
+- **Auto-merge**: Dependabot PRs and labeled PRs
+- **Wiki Generation**: Automatic documentation updates
+- **Release Automation**: Semantic versioning and changelog generation
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended package manager)
+- Git configured with GitHub
+
+### Initialize Your Project
+
+1. **Use this template** on GitHub
+2. **Clone your repository**
+3. **Run initialization**:
+
+```bash
+# Linux/macOS
+pnpm init:template
+
+# Windows
+pnpm init:template:win
 ```
-cd my-turborepo
 
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+The initialization script will:
 
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
+- Install dependencies
+- Create initial commit
+- Fetch your repository information
+- Customize all files with your project details
+- Configure AI helpers with project context
+
+### Development Commands
+
+```bash
+# Start all apps in development mode
+pnpm dev
+
+# Start specific app
+pnpm dev --filter=web   # Frontend only
+pnpm dev --filter=api   # Backend only
+
+# Build all packages
+pnpm build
+
+# Run all tests
+pnpm test
+
+# Lint and format
+pnpm lint
+pnpm format
+
+# Quality check (lint + format + type check + test + build)
+pnpm quality:check
 ```
 
-You can build a specific package by using a
-[filter](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters):
+## 🤖 AI-Powered Development
 
-```
-# With [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
-
-# Without [global `turbo`](https://turborepo.com/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
+This template includes specialized AI helpers:
 
 ```
 cd my-turborepo
