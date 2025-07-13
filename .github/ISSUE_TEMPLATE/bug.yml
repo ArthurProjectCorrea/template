@@ -1,0 +1,109 @@
+name: 🐛 Bug Report
+description: Reportar um bug ou comportamento inesperado
+title: "fix: "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar este bug! Isso nos ajuda a melhorar o sistema.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Componente Afetado
+      description: Onde o bug está ocorrendo?
+      options:
+        - Frontend (apps/web)
+        - Backend (apps/api)
+        - Componentes UI (packages/ui)
+        - Build/Deploy
+        - Configurações
+        - Testes
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do Bug
+      description: Descreva claramente o que está acontecendo
+      placeholder: O que você esperava vs o que realmente aconteceu
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para Reproduzir
+      description: Como reproduzir este bug?
+      placeholder: |
+        1. Vá para '...'
+        2. Clique em '...'
+        3. Role para baixo até '...'
+        4. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Esperado
+      description: O que deveria acontecer?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento Atual
+      description: O que está acontecendo agora?
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Informações sobre o ambiente onde o bug ocorre
+      placeholder: |
+        - OS: [ex: Windows 11, macOS 14, Ubuntu 22.04]
+        - Browser: [ex: Chrome 120, Firefox 121, Safari 17]
+        - Node Version: [ex: 20.10.0]
+        - pnpm Version: [ex: 8.15.0]
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs/Mensagens de Erro
+      description: Cole aqui qualquer log ou mensagem de erro relevante
+      render: shell
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots/Videos
+      description: Se aplicável, adicione screenshots ou videos do problema
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severidade
+      description: Qual o impacto deste bug?
+      options:
+        - Baixa - Problema cosmético
+        - Média - Funcionalidade não crítica afetada
+        - Alta - Funcionalidade importante não funciona
+        - Crítica - Sistema não funciona/crash
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround
+      description: Existe alguma forma de contornar o problema temporariamente?

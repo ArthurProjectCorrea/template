@@ -1,0 +1,54 @@
+name: 📚 Documentation
+description: Melhorias ou correções na documentação
+title: "docs: "
+labels: ["documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por contribuir com a documentação! Documentação clara é essencial.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Tipo de Documentação
+      description: Que tipo de documentação precisa ser atualizada?
+      options:
+        - README
+        - API Documentation
+        - Code Comments
+        - Architecture Docs
+        - Setup/Installation Guide
+        - Contributing Guide
+        - Examples/Tutorials
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição
+      description: O que precisa ser documentado ou corrigido?
+    validations:
+      required: true
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Localização
+      description: Onde esta documentação deveria estar ou onde está o problema?
+      placeholder: "Arquivo específico, seção, ou nova localização sugerida"
+
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Estado Atual
+      description: Se aplicável, descreva o que está documentado atualmente
+
+  - type: textarea
+    id: proposed-changes
+    attributes:
+      label: Mudanças Propostas
+      description: Como a documentação deveria ser melhorada?

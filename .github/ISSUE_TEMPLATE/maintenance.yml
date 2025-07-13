@@ -1,0 +1,55 @@
+name: 🧹 Chore/Maintenance
+description: Tarefas de manutenção, refatoração ou atualizações
+title: "chore: "
+labels: ["maintenance"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tarefas de manutenção ajudam a manter o código limpo e atualizado.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoria
+      description: Que tipo de manutenção é necessária?
+      options:
+        - Dependency Updates
+        - Code Refactoring
+        - Performance Optimization
+        - Code Cleanup
+        - Build/CI Improvements
+        - Security Updates
+        - Configuration Updates
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição
+      description: Descreva a tarefa de manutenção
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivação
+      description: Por que esta manutenção é necessária?
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Escopo
+      description: Quais arquivos/componentes serão afetados?
+
+  - type: checkbox
+    id: breaking-changes
+    attributes:
+      label: Breaking Changes
+      description: Esta manutenção introduz mudanças que quebram compatibilidade?
+      options:
+        - label: Sim, esta mudança pode quebrar compatibilidade existente

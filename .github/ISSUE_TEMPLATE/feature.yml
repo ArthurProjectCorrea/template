@@ -1,0 +1,84 @@
+name: 🚀 Feature Request
+description: Solicitar uma nova funcionalidade
+title: "feat: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por contribuir! Por favor, preencha as informações abaixo para ajudar a implementar sua funcionalidade.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Componente
+      description: Qual parte do sistema será afetada?
+      options:
+        - Frontend (apps/web)
+        - Backend (apps/api)
+        - Componentes UI (packages/ui)
+        - Configurações (packages/*)
+        - Documentação
+        - CI/CD
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição da Funcionalidade
+      description: Descreva claramente o que você gostaria que fosse implementado
+      placeholder: "Como usuário, eu gostaria de..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Critérios de Aceitação
+      description: Liste os critérios que definem quando esta funcionalidade está completa
+      placeholder: |
+        - [ ] Critério 1
+        - [ ] Critério 2
+        - [ ] Critério 3
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-requirements
+    attributes:
+      label: Requisitos Técnicos
+      description: Especificações técnicas, APIs, dependências, etc.
+      placeholder: |
+        - APIs necessárias
+        - Componentes a serem criados
+        - Dependências externas
+        - Considerações de performance
+
+  - type: textarea
+    id: design-mockups
+    attributes:
+      label: Design/Mockups
+      description: Links para designs, wireframes ou mockups (se aplicável)
+      placeholder: Figma, imagens, ou descrição visual
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Prioridade
+      description: Qual a urgência desta funcionalidade?
+      options:
+        - Baixa
+        - Média
+        - Alta
+        - Crítica
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Contexto Adicional
+      description: Qualquer informação adicional relevante
