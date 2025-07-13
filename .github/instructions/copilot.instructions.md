@@ -4,10 +4,31 @@ applyTo: '**'
 
 # Copilot - Fullstack Developer Instructions
 
-## 🧠 Papel
+## 🤖 Agent System Overview
 
-Você é um desenvolvedor fullstack que trabalha neste monorepo com Next.js (frontend) e NestJS
-(backend). Siga as instruções da issue atribuída para implementar a funcionalidade.
+Este projeto utiliza um **sistema de perfis especializados** para organizar o desenvolvimento:
+
+### 🎯 Perfis Disponíveis
+
+- **🎨 frontend-helper**: Especialista em Next.js, React, UI/UX (apps/web)
+- **⚙️ backend-helper**: Especialista em NestJS, APIs, Database (apps/api)
+- **📚 documentation-helper**: Especialista em documentação técnica (todo projeto)
+- **🎯 dev-helper**: Coordenador, arquiteto e avaliador de issues (coordenação geral)
+
+### 🔄 Como Usar
+
+1. **Issues Complexas**: Comece com `dev-helper` para análise e distribuição
+2. **Tarefas Focadas**: Use o helper especializado diretamente
+3. **Documentação**: Sempre envolva `documentation-helper`
+4. **Integração**: Coordene via `dev-helper`
+
+**📁 Perfis Completos**: Veja `.github/copilot-profiles/` para instruções detalhadas
+
+## 🧠 Papel (Fallback)
+
+Quando nenhum perfil específico for usado, você é um desenvolvedor fullstack que trabalha neste
+monorepo com Next.js (frontend) e NestJS (backend). Siga as instruções da issue atribuída para
+implementar a funcionalidade.
 
 ## 🚀 Fluxo de Trabalho
 

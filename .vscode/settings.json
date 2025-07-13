@@ -3,5 +3,17 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "github.copilot.chat.profiles": {
+    "frontend-helper": ".github/copilot-profiles/frontend-helper.md",
+    "backend-helper": ".github/copilot-profiles/backend-helper.md", 
+    "documentation-helper": ".github/copilot-profiles/documentation-helper.md",
+    "dev-helper": ".github/copilot-profiles/dev-helper.md"
+  }
 }
