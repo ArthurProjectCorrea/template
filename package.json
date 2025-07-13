@@ -18,7 +18,10 @@
     "commit": "cz",
     "wiki:generate": "node scripts/generate-wiki.js",
     "wiki:update": "npm run wiki:generate",
-    "quality:check": "pnpm lint && pnpm format:check && pnpm check-types && pnpm test && pnpm build"
+    "quality:check": "pnpm lint && pnpm format:check && pnpm check-types && pnpm test && pnpm build",
+    "init:project": "node scripts/initialize-project.js",
+    "init:template": "bash scripts/initialize-project.sh",
+    "init:template:win": "scripts/initialize-project.bat"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
