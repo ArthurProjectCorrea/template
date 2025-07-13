@@ -55,15 +55,35 @@ jobs:
       - name: 🔧 Build all packages
         run: pnpm build
 
-      - name: 🧪 Test Backend
-        run: pnpm --filter api test
+      - name: 🧪 Test Backend with Coverage
+        run: pnpm --filter api test:cov
         env:
           NODE_ENV: test
 
-      - name: 🧪 Test Frontend
-        run: pnpm --filter web test
+      - name: 🧪 Test Frontend with Coverage
+        run: pnpm --filter web test:cov
         env:
           NODE_ENV: test
+
+      - name: 📊 Coverage Check - Backend
+        run: |
+          echo "🔍 Checking backend coverage thresholds..."
+          pnpm --filter api test:cov --passWithNoTests
+          if [ $? -ne 0 ]; then
+            echo "❌ Backend coverage below minimum thresholds"
+            exit 1
+          fi
+          echo "✅ Backend coverage meets requirements"
+
+      - name: 📊 Coverage Check - Frontend  
+        run: |
+          echo "🔍 Checking frontend coverage thresholds..."
+          pnpm --filter web test:cov --passWithNoTests
+          if [ $? -ne 0 ]; then
+            echo "❌ Frontend coverage below minimum thresholds"
+            exit 1
+          fi
+          echo "✅ Frontend coverage meets requirements"
 
       - name: 📊 Upload coverage reports
         if: always()
@@ -71,7 +91,9 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./apps/api/coverage/lcov.info,./apps/web/coverage/lcov.info
-          fail_ci_if_error: false
+          fail_ci_if_error: true
+          flags: unittests
+          name: codecov-umbrella
 
   auto-merge:
     name: Auto Merge

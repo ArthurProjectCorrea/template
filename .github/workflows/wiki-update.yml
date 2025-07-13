@@ -1,0 +1,121 @@
+name: 📚 Auto-Update Wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/api/src/**'
+      - 'apps/web/app/**'
+      - 'apps/web/components/**'
+      - 'packages/ui/src/**'
+      - '.github/workflows/**'
+      - 'README.md'
+      - 'docs/**'
+  
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Force update all wiki pages'
+        required: false
+        default: 'false'
+
+  # Schedule daily updates
+  schedule:
+    - cron: '0 2 * * *' # Daily at 2 AM UTC
+
+concurrency:
+  group: wiki-update
+  cancel-in-progress: false
+
+jobs:
+  update-wiki:
+    name: Update Wiki Documentation
+    runs-on: ubuntu-latest
+    if: github.repository_owner == github.actor || github.event_name == 'schedule'
+    
+    permissions:
+      contents: write
+      
+    steps:
+      - name: 📦 Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: 🏗️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: false
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 📚 Generate Wiki Content
+        run: |
+          echo "🚀 Starting wiki generation..."
+          node scripts/generate-wiki.js
+          echo "✅ Wiki generation completed"
+
+      - name: 🔍 Check for Changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain .github/wiki)" ]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+            echo "📝 Wiki changes detected"
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+            echo "📋 No wiki changes detected"
+          fi
+
+      - name: 📊 Wiki Update Summary
+        if: steps.changes.outputs.changes == 'true'
+        run: |
+          echo "📚 Wiki Update Summary:"
+          echo "===================="
+          git status --porcelain .github/wiki | while read status file; do
+            case $status in
+              "A ") echo "➕ Added: $(basename "$file")" ;;
+              "M ") echo "📝 Modified: $(basename "$file")" ;;
+              "D ") echo "🗑️ Deleted: $(basename "$file")" ;;
+              "??") echo "🆕 New: $(basename "$file")" ;;
+              *) echo "🔄 Changed: $(basename "$file")" ;;
+            esac
+          done
+
+      - name: 📤 Commit Wiki Changes
+        if: steps.changes.outputs.changes == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          git add .github/wiki
+          git commit -m "docs: auto-update wiki documentation
+
+          📚 Automated wiki update by documentation-helper
+          🤖 Generated on $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          📋 Updated documentation for API, components, workflows
+          
+          [skip ci]"
+          
+          git push
+
+      - name: 📢 Wiki Update Notification
+        if: steps.changes.outputs.changes == 'true'
+        run: |
+          echo "✅ Wiki successfully updated!"
+          echo "📖 View updated documentation in .github/wiki/"
+
+      - name: 📋 No Changes Notification
+        if: steps.changes.outputs.changes == 'false'
+        run: |
+          echo "📋 No wiki updates needed"
+          echo "📚 All documentation is up to date"
