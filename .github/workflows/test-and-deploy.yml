@@ -87,7 +87,7 @@ jobs:
 
       - name: 📊 Upload coverage reports
         if: always()
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./apps/api/coverage/lcov.info,./apps/web/coverage/lcov.info
