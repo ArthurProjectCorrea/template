@@ -76,19 +76,118 @@ This template includes a complete fullstack setup:
 - **Wiki Generation**: Automatic documentation updates
 - **Release Automation**: Semantic versioning and changelog generation
 
-## 🚀 Getting Started
+## 🚀 Complete Installation Workflow
 
 ### Prerequisites
 
 - Node.js 18+
 - pnpm (recommended package manager)
 - Git configured with GitHub
+- GitHub CLI (gh) for branch protection (optional)
 
-### Initialize Your Project
+### Manual Installation Steps (Steps 1-8)
 
-1. **Use this template** on GitHub
-2. **Clone your repository**
-3. **Run initialization**:
+#### Steps 1-2: Template Setup
+
+1. **Use this template** on GitHub:
+   - Click "Use this template" button
+   - Create your new repository
+   - Choose public/private visibility
+
+2. **Clone your repository**:
+   ```bash
+   git clone https://github.com/your-username/your-project.git
+   cd your-project
+   ```
+
+#### Automated Setup (Steps 3-8)
+
+3. **Run the complete setup script**:
+
+   ```bash
+   # Linux/macOS/WSL
+   chmod +x scripts/complete-setup.sh
+   ./scripts/complete-setup.sh
+
+   # Windows PowerShell
+   scripts/complete-setup.bat
+
+   # Cross-platform (Node.js)
+   node scripts/complete-setup.js
+   ```
+
+   **This automated script will:**
+   - ✅ **Step 3**: Install dependencies (`pnpm install`)
+   - ✅ **Step 4**: Edit initial commit with standard message
+   - ✅ **Step 5**: Configure .gitignore for docs folders
+   - ✅ **Step 6**: Commit changes with `chore(setup): configure gitignore and project settings`
+   - ✅ **Step 7**: Create dev branch from main
+   - ✅ **Step 8**: Configure branch protection rules (if GitHub CLI available)
+
+#### Manual Configuration (If Needed)
+
+If the automated setup cannot configure branch protection, manually set up:
+
+**Main Branch Protection Rules:**
+
+- Require pull request before merging
+- Require status checks (CI/tests)
+- Require linear history
+- Disable direct commits
+
+**Dev Branch Protection Rules:**
+
+- Require pull request before merging
+- Require status checks (CI/tests)
+- Disable direct commits
+
+**Configure at:** `https://github.com/your-username/your-repo/settings/branches`
+
+### Alternative: Step-by-Step Manual Setup
+
+If you prefer manual setup or the automated script fails:
+
+3. **Install dependencies**:
+
+   ```bash
+   pnpm install
+   ```
+
+4. **Edit initial commit**:
+
+   ```bash
+   git add .
+   git commit --amend -m "chore(setup): initial setup of the fullstack project with monorepo (#0)"
+   ```
+
+5. **Configure .gitignore** (add to all .gitignore files):
+
+   ```gitignore
+   # Documentation folders (local only)
+   docs/
+   docs/**
+   ```
+
+6. **Commit setup changes**:
+
+   ```bash
+   git add .
+   git commit -m "chore(setup): configure gitignore and project settings"
+   ```
+
+7. **Create dev branch**:
+
+   ```bash
+   git checkout -b dev
+   git push -u origin dev
+   git checkout main
+   ```
+
+8. **Configure branch protection** (requires GitHub CLI or manual setup)
+
+### Quick Template Initialization (Legacy)
+
+For quick testing without the complete workflow:
 
 ```bash
 # Linux/macOS

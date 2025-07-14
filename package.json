@@ -19,6 +19,9 @@
     "wiki:generate": "node scripts/generate-wiki.js",
     "wiki:update": "npm run wiki:generate",
     "quality:check": "pnpm lint && pnpm format:check && pnpm check-types && pnpm test && pnpm build",
+    "setup:complete": "node scripts/complete-setup.js",
+    "setup:complete:sh": "bash scripts/complete-setup.sh",
+    "setup:complete:bat": "scripts/complete-setup.bat",
     "init:project": "node scripts/initialize-project.js",
     "init:template": "bash scripts/initialize-project.sh",
     "init:template:win": "scripts/initialize-project.bat"

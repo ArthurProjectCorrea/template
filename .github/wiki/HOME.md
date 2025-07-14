@@ -18,6 +18,7 @@ Este template fornece uma base sólida para projetos fullstack com:
 
 ### 🚀 Primeiros Passos
 
+- [**Installation Workflow**](INSTALLATION_WORKFLOW.md) - Fluxo completo de instalação (Etapas 1-8)
 - [**Quick Start**](QUICK_START.md) - Como usar o template rapidamente
 - [**Template Usage**](TEMPLATE_USAGE.md) - Guia completo de uso do template
 - [**Workspace Config**](WORKSPACE_CONFIG.md) - Configuração do workspace
