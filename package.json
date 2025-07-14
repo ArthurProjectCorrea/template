@@ -1,5 +1,6 @@
 {
   "name": "template",
+  "type": "module",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -18,6 +19,8 @@
     "commit": "cz",
     "wiki:generate": "node scripts/generate-wiki.js",
     "wiki:update": "npm run wiki:generate",
+    "wiki:setup": "node scripts/setup-github-wiki.js",
+    "wiki:sync": "node scripts/sync-wiki.js",
     "quality:check": "pnpm lint && pnpm format:check && pnpm check-types && pnpm test && pnpm build",
     "setup:complete": "node scripts/complete-setup.js",
     "setup:complete:sh": "bash scripts/complete-setup.sh",

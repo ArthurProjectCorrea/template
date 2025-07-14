@@ -40,3 +40,6 @@ yarn-error.log*
 # Documentation folders (local only)
 docs/
 docs/**
+
+# Wiki sync temporary files
+.temp-wiki*
