@@ -22,9 +22,7 @@
     "setup:complete": "node scripts/complete-setup.js",
     "setup:complete:sh": "bash scripts/complete-setup.sh",
     "setup:complete:bat": "scripts/complete-setup.bat",
-    "init:project": "node scripts/initialize-project.js",
-    "init:template": "bash scripts/initialize-project.sh",
-    "init:template:win": "scripts/initialize-project.bat"
+    "init:template": "node scripts/initialize-project.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",

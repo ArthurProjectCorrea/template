@@ -1,18 +1,39 @@
-# 🚀 Initialize Project Scripts
+# 🚀 Project Setup Scripts
 
-This directory contains scripts to automatically initialize a new project from the template.
+This directory contains scripts to automatically initialize and set up projects from the template.
 
-## 📁 Files
+## 📁 Available Scripts
 
-- **`initialize-project.js`** - Main Node.js script (cross-platform)
-- **`initialize-project.sh`** - Bash wrapper for Unix/Linux/macOS
-- **`initialize-project.bat`** - Batch wrapper for Windows
-- **`generate-wiki.js`** - Wiki generation script
-- **`update-wiki.sh`** - Wiki update script
+### Setup Scripts
 
-## 🎯 Purpose
+- **`complete-setup.js`** - Complete project setup (Steps 3-8)
+- **`complete-setup.sh`** - Shell version for Unix/Linux/macOS
+- **`complete-setup.bat`** - Batch version for Windows
 
-These scripts automate the process of:
+### Initialization Scripts
+
+- **`initialize-project.js`** - Template initialization and customization
+
+### Documentation Scripts
+
+- **`generate-wiki.js`** - Automatic wiki generation
+
+## 🎯 Script Functions
+
+### Complete Setup (`complete-setup.*`)
+
+Automates the professional setup workflow (Steps 3-8):
+
+1. **Install dependencies** - `pnpm install`
+2. **Edit initial commit** - Standard commit message
+3. **Configure .gitignore** - Ignore docs folders
+4. **Commit changes** - Setup configuration
+5. **Create dev branch** - From main branch
+6. **Configure branch protection** - GitHub rules
+
+### Template Initialization (`initialize-project.js`)
+
+Customizes the template for your specific project:
 
 1. Installing dependencies
 2. Making initial git commit
@@ -23,17 +44,22 @@ These scripts automate the process of:
 
 ## 🚀 Usage
 
-### Automatic Initialization
+### Complete Setup (Recommended)
 
 ```bash
-# Unix/Linux/macOS
+# Cross-platform (recommended)
+pnpm setup:complete
+
+# Platform-specific
+pnpm setup:complete:sh    # Linux/macOS
+pnpm setup:complete:bat   # Windows
+```
+
+### Template Initialization
+
+```bash
+# Template customization
 pnpm init:template
-
-# Windows
-pnpm init:template:win
-
-# Manual execution
-node scripts/initialize-project.js
 ```
 
 ### What Gets Updated

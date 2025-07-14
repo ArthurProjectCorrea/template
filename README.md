@@ -105,15 +105,14 @@ This template includes a complete fullstack setup:
 3. **Run the complete setup script**:
 
    ```bash
+   # Cross-platform (Node.js) - Recommended
+   pnpm setup:complete
+
    # Linux/macOS/WSL
-   chmod +x scripts/complete-setup.sh
-   ./scripts/complete-setup.sh
+   pnpm setup:complete:sh
 
    # Windows PowerShell
-   scripts/complete-setup.bat
-
-   # Cross-platform (Node.js)
-   node scripts/complete-setup.js
+   pnpm setup:complete:bat
    ```
 
    **This automated script will:**
@@ -190,11 +189,8 @@ If you prefer manual setup or the automated script fails:
 For quick testing without the complete workflow:
 
 ```bash
-# Linux/macOS
+# Quick template initialization (legacy)
 pnpm init:template
-
-# Windows
-pnpm init:template:win
 ```
 
 The initialization script will:
