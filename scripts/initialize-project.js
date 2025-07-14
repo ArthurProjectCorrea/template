@@ -282,6 +282,69 @@ Todos os helpers de IA devem considerar este contexto ao implementar funcionalid
     }
 
     /**
+     * Update .gitignore files to ignore documentation folders
+     */
+    updateGitIgnoreFiles() {
+        log.step('📄 Updating .gitignore files to ignore docs folders...');
+
+        const docsIgnoreEntries = [
+            '',
+            '# Documentation folders (local only)',
+            'docs/',
+            'docs/**'
+        ];
+
+        // Update root .gitignore
+        this.addToGitIgnore(join(this.projectRoot, '.gitignore'), docsIgnoreEntries);
+
+        // Update web app .gitignore
+        const webGitIgnorePath = join(this.projectRoot, 'apps/web/.gitignore');
+        this.addToGitIgnore(webGitIgnorePath, docsIgnoreEntries);
+
+        // Update API app .gitignore
+        const apiGitIgnorePath = join(this.projectRoot, 'apps/api/.gitignore');
+        this.addToGitIgnore(apiGitIgnorePath, docsIgnoreEntries);
+
+        log.success('Updated .gitignore files to ignore docs folders');
+    }
+
+    /**
+     * Add entries to a .gitignore file if they don't already exist
+     */
+    addToGitIgnore(gitIgnorePath, entries) {
+        if (!existsSync(gitIgnorePath)) {
+            log.warn(`File not found: ${gitIgnorePath}`);
+            return;
+        }
+
+        try {
+            let content = readFileSync(gitIgnorePath, 'utf8');
+            let modified = false;
+
+            // Check if docs/ is already ignored
+            if (!content.includes('docs/')) {
+                // Ensure content ends with newline
+                if (!content.endsWith('\n')) {
+                    content += '\n';
+                }
+
+                // Add entries
+                content += entries.join('\n') + '\n';
+                modified = true;
+            }
+
+            if (modified) {
+                writeFileSync(gitIgnorePath, content, 'utf8');
+                log.success(`Updated: ${gitIgnorePath}`);
+            } else {
+                log.info(`Already configured: ${gitIgnorePath}`);
+            }
+        } catch (error) {
+            log.error(`Failed to update ${gitIgnorePath}: ${error.message}`);
+        }
+    }
+
+    /**
      * Main initialization process
      */
     async initialize() {
@@ -338,6 +401,8 @@ Todos os helpers de IA devem considerar este contexto ao implementar funcionalid
             this.updateCopilotInstructions();
             this.updateChatModes();
             this.updateCIConfig();
+            this.updateGitIgnoreFiles();
+            this.updateGitIgnoreFiles();
 
             // Step 7: Final commit with updates
             log.step('💾 Committing project customization...');

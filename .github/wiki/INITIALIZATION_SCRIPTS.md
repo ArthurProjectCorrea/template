@@ -12,7 +12,8 @@ O sistema de inicialização automatiza:
 3. **Push para repositório** remoto
 4. **Coleta de metadados** do repositório GitHub
 5. **Atualização de arquivos** com informações do projeto
-6. **Contextualização dos helpers** de IA
+6. **Configuração de .gitignore** para ignorar docs locais
+7. **Contextualização dos helpers** de IA
 
 ## 📋 Scripts Disponíveis
 
@@ -27,8 +28,9 @@ O sistema de inicialização automatiza:
 3. Commit e push inicial
 4. Coleta de metadados GitHub
 5. Atualização de arquivos
-6. Contextualização de IA helpers
-7. Commit final das mudanças
+6. Configuração de .gitignore
+7. Contextualização de IA helpers
+8. Commit final das mudanças
 ```
 
 **Uso**:
@@ -204,6 +206,9 @@ graph TD
 - `README.md` - Documentação principal
 - `apps/web/package.json` - Frontend package
 - `apps/api/package.json` - Backend package
+- `.gitignore` - Ignora pastas docs locais
+- `apps/web/.gitignore` - Ignora docs do frontend
+- `apps/api/.gitignore` - Ignora docs do backend
 
 ### Documentação
 
@@ -324,3 +329,22 @@ Após execução, verificar:
 
 Este sistema garante que cada projeto criado a partir do template seja automaticamente configurado
 com as informações corretas e contexto apropriado para desenvolvimento eficiente.
+
+#### GitIgnore Configuration
+
+```bash
+# Adiciona às configurações de .gitignore:
+# - Root .gitignore
+# - apps/web/.gitignore
+# - apps/api/.gitignore
+
+# Entradas adicionadas:
+docs/
+docs/**
+
+# Benefícios:
+# - Documentação local (Turbo, Next.js, NestJS) não versionada
+# - Repositório mais limpo
+# - Docs personalizadas por projeto
+# - Reduz tamanho do repositório
+```
